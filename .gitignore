@@ -1,0 +1,52 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.log
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+*.tgz
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+application-default.yml
+bootstrap-default.yml
+init-local-database.sh
+values_yaml.spec
+
+### macos junk file
+.DS_Store
+
+### JRebel
+rebel.xml
+
+### liquibase
+choerodon_temp/*
+
+### native temp files
+deployfile
+gitops
+tmp
+
+### spring-default files
+/src/main/resources/bootstrap-default.yml
+/src/main/resources/application-default.yml
+/src/main/resources/application-default-sit.yml
+/src/main/resources/application-default-sit.yml
+/src/main/resources/application-default-uat.yml
