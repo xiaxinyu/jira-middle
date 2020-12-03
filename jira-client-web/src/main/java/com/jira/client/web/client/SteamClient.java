@@ -1,5 +1,9 @@
 package com.jira.client.web.client;
 
+import com.jira.client.web.config.SteamProperties;
+import com.jira.client.web.model.properties.OAuthProperties;
+import com.jira.client.web.model.steam.IamProjectVO;
+import com.jira.client.web.model.steam.IamUserVO;
 import com.jira.client.web.model.steam.SteamTokenDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -11,7 +15,6 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -23,18 +26,23 @@ public class SteamClient {
     @Autowired
     RestTemplate restTemplate;
 
+    @Autowired
+    SteamProperties steamProperties;
+
     public String getSteamToken() {
+        OAuthProperties oauth = steamProperties.getOauth();
+
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("client_id", "devops");
-        params.add("client_secret", "choerodon");
+        params.add("client_id", oauth.getClientId());
+        params.add("client_secret", oauth.getClientSecret());
         params.add("grant_type", "password");
-        params.add("username", "admin");
-        params.add("password", "NGpaQCNlSF5DRzJuc0pCQQ==");
+        params.add("username", oauth.getUserName());
+        params.add("password", oauth.getPassword());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
-        String url = "http://xxxxxx/oauth/oauth/token";
+        String url = oauth.getUrl();
 
         ResponseEntity<SteamTokenDTO> response = restTemplate.postForEntity(url, request, SteamTokenDTO.class);
         if (Objects.nonNull(response) && response.getStatusCode().is2xxSuccessful()) {
@@ -43,17 +51,19 @@ public class SteamClient {
         return null;
     }
 
-    public void set() {
-        /*RestTemplate restTemplate = new RestTemplate();
-        String url = "http://47.xxx.xxx.96/register/checkEmail";
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+    public IamProjectVO getSteamProject() {
+        return IamProjectVO.builder().build();
+    }
 
-        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-        map.add("email", "844072586@qq.com");
+    public IamUserVO getUser(String loginName) {
+        return IamUserVO.builder().build();
+    }
 
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-        System.out.println(response.getBody());*/
+    public IamUserVO createStory() {
+        return null;
+    }
+
+    public IamUserVO createDefect() {
+        return null;
     }
 }
