@@ -10,11 +10,6 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @Author:
- * @Date: 2019-11-12
- * @Description:
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

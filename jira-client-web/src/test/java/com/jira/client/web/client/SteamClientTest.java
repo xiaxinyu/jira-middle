@@ -1,6 +1,7 @@
 package com.jira.client.web.client;
 
 import com.jira.client.web.Application;
+import com.jira.client.web.model.steam.IamProjectVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -31,5 +32,13 @@ public class SteamClientTest {
         String token = steamClient.getSteamToken();
         Assert.assertNotNull(token);
         System.out.println(token);
+    }
+
+    @Test
+    public void test_getSteamProject() throws Exception {
+        Long projectId = 1576L;
+        IamProjectVO project = steamClient.getSteamProject(projectId);
+        Assert.assertNotNull(project);
+        System.out.println(project);
     }
 }

@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 @ToString
 @ConfigurationProperties(prefix = "steam")
 public class SteamProperties {
+    private String host;
     private OAuthProperties oauth;
     private AgileProperties agile;
     private IamProperties iam;
