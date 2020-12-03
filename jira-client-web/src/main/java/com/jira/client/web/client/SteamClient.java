@@ -51,7 +51,7 @@ public class SteamClient {
         return null;
     }
 
-    public IamProjectVO getSteamProject() {
+    public IamProjectVO getSteamProject(Long projectId) {
         return IamProjectVO.builder().build();
     }
 
@@ -59,11 +59,11 @@ public class SteamClient {
         return IamUserVO.builder().build();
     }
 
-    public IamUserVO createStory() {
+    public Boolean createStory() {
         return null;
     }
 
-    public IamUserVO createDefect() {
+    public Boolean createDefect() {
         return null;
     }
 }

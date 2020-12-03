@@ -12,10 +12,10 @@ public interface SteamService {
     /**
      * 获取项目
      *
-     * @param projectKey jira项目key
+     * @param projectId jira项目key
      * @return 项目信息
      */
-    IamProjectVO checkProject(String projectKey);
+    IamProjectVO getProject(Long projectId);
 
     /**
      * 获取用户

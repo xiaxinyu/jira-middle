@@ -1,6 +1,5 @@
 package com.jira.client.web.service.jira.impl;
 
-import com.jira.client.web.client.SteamClient;
 import com.jira.client.web.common.enums.IssueEventType;
 import com.jira.client.web.model.steam.IamProjectVO;
 import com.jira.client.web.model.steam.IamUserVO;
@@ -33,7 +32,8 @@ public class JiraWebhookServiceImpl implements JiraWebhookService {
             return;
         }
 
-        IamProjectVO project = steamService.checkProject(projectKey);
+        Long projectId = 0L;
+        IamProjectVO project = steamService.getProject(projectId);
 
         CreatorDTO creatorDTO = jiraWebhookDTO.getIssue().getFields().getCreator();
         IamUserVO user = steamService.getUser(creatorDTO.getName());

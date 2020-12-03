@@ -22,8 +22,8 @@ public class SteamServiceImpl implements SteamService {
     SteamClient steamClient;
 
     @Override
-    public IamProjectVO checkProject(String projectKey) {
-        IamProjectVO project = steamClient.getSteamProject();
+    public IamProjectVO getProject(Long projectId) {
+        IamProjectVO project = steamClient.getSteamProject(projectId);
         if (Objects.isNull(project)) {
             throw new RuntimeException("找不到项目");
         }
